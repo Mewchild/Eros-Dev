@@ -185,18 +185,45 @@
 			. += "<a href='?src=\ref[src];ear_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_ears, 2)][num2hex(pref.g_ears, 2)][num2hex(pref.b_ears, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_ears, 2)][num2hex(pref.g_ears, 2)][num2hex(pref.b_ears)]'><tr><td>__</td></tr></table> </font><br>"
 //Eros edit END
 
+	var/tail_editable = TRUE
 	var/tail_display = "Normal"
+
+	//Check for special 'fixed' tail styles
+
+	if(pref.species == "Veirei")
+		world << "Is veirei"
+		tail_editable = FALSE
+		if(!pref.tail_style || pref.tail_style != "Spider")
+			world << "No tail_style or not spider tail."
+			for(var/x in tail_styles_list)
+				if(x == "Spider")
+					pref.tail_style = tail_styles_list[x]
+			world << "Pref.tail style is [pref.tail_style]"
+	else if(pref.species == "Lamia")
+		tail_editable = FALSE
+		var/datum/sprite_accessory/tail/taur/naga/snakebutt = new
+		if(!pref.tail_style || pref.tail_style != snakebutt)
+			pref.tail_style = snakebutt
+
+	//Get proper name, or find it's missing
 	if(pref.tail_style && (pref.tail_style in tail_styles_list))
 		var/datum/sprite_accessory/tail/instance = tail_styles_list[pref.tail_style]
 		tail_display = instance.name
 	else if(pref.tail_style)
 		tail_display = "REQUIRES UPDATE"
 	. += "<b>Tail</b><br>"
-	. += " Style: <a href='?src=\ref[src];tail_style=1'>[tail_display]</a><br>"
+
+	//Render output
+	if(tail_editable)
+		. += " Style: <a href='?src=\ref[src];tail_style=1'>[tail_display]</a><br>"
+	else
+		. += " Style: CANNOT CHANGE<br>"
 
 	if(tail_styles_list[pref.tail_style])
+		world << "Tail exists for coloring."
 		var/datum/sprite_accessory/tail/T = tail_styles_list[pref.tail_style]
 		if (T.do_colouration)
+			world << "Tail is colorable."
 			. += "<a href='?src=\ref[src];tail_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_tail, 2)][num2hex(pref.g_tail, 2)][num2hex(pref.b_tail, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_tail, 2)][num2hex(pref.g_tail, 2)][num2hex(pref.b_tail)]'><tr><td>__</td></tr></table> </font><br>"
 
 //Eros edit START
