@@ -175,6 +175,8 @@
 
 	var/pass_flags = 0
 
+	var/is_taur_species = 0
+
 /datum/species/New()
 	if(hud_type)
 		hud = new hud_type()

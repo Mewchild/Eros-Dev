@@ -1051,6 +1051,9 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/proc/update_tail_showing(var/update_icons=1)
 	overlays_standing[TAIL_LAYER] = null
 
+	if(species.is_taur_species && !tail_style)
+		set_taur_tail()
+
 	// VOREStation Edit - START
 	overlays_standing[TAIL_LAYER] = get_tail_image()
 	if(overlays_standing[TAIL_LAYER])
@@ -1089,6 +1092,8 @@ var/global/list/damage_icon_parts = list()
 			var/icon/hair_icon = icon('icons/effects/species.dmi', "[species.get_tail(src)]_[use_species_tail]")
 			hair_icon.Blend(rgb(r_hair, g_hair, b_hair), ICON_ADD)
 			tail_icon.Blend(hair_icon, ICON_OVERLAY)
+		if(species.is_taur_species)
+			world << "yay"
 		tail_icon_cache[icon_key] = tail_icon
 
 	return tail_icon

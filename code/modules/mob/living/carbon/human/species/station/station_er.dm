@@ -13,6 +13,8 @@
 	name_language = LANGUAGE_VEIREI
 	color_mult = 1
 
+	is_taur_species = 1
+
 	min_age = 18
 	max_age = 110
 
@@ -61,6 +63,8 @@
 	secondary_langs = list(LANGUAGE_LAMIA)
 	name_language = LANGUAGE_LAMIA
 	color_mult = 1
+
+	is_taur_species = 1
 
 	min_age = 18
 	max_age = 110
