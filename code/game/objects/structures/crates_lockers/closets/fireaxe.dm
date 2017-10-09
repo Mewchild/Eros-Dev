@@ -3,6 +3,7 @@
 	name = "fire axe cabinet"
 	desc = "There is small label that reads \"For Emergency use only\" along with details for safe use of the axe. As if."
 	var/obj/item/weapon/material/twohanded/fireaxe/fireaxe
+	icon = 'icons/obj/closet.dmi'	//Eros edit
 	icon_state = "fireaxe1000"
 	icon_closed = "fireaxe1000"
 	icon_opened = "fireaxe1100"
@@ -34,7 +35,7 @@
 			if(istype(O, /obj/item/device/multitool))
 				user << "<span class='warning'>Resetting circuitry...</span>"
 				playsound(user, 'sound/machines/lockreset.ogg', 50, 1)
-				if(do_after(user, 20))
+				if(do_after(user, 20 * O.toolspeed))
 					src.locked = 0
 					user << "<span class = 'caution'> You disable the locking modules.</span>"
 					update_icon()
@@ -92,11 +93,8 @@
 					return
 				else
 					user << "<span class='warning'>Resetting circuitry...</span>"
-					sleep(50)
-					src.locked = 1
-					user << "<span class='notice'>You re-enable the locking modules.</span>"
 					playsound(user, 'sound/machines/lockenable.ogg', 50, 1)
-					if(do_after(user,20))
+					if(do_after(user,20 * O.toolspeed))
 						src.locked = 1
 						user << "<span class = 'caution'> You re-enable the locking modules.</span>"
 					return

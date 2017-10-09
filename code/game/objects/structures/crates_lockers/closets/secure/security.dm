@@ -149,6 +149,9 @@
 		new /obj/item/weapon/gun/energy/gun(src)
 		new /obj/item/weapon/cell/device/weapon(src)
 		new /obj/item/weapon/melee/telebaton(src)
+		new /obj/item/clothing/head/beret/sec/corporate/hos(src)
+		new /obj/item/clothing/suit/storage/hooded/wintercoat/security(src)
+		new /obj/item/clothing/shoes/boots/winter/security(src)
 		new /obj/item/device/flashlight/maglight(src)
 		return
 //VOREStation Edit End
@@ -193,6 +196,7 @@
 		new /obj/item/weapon/storage/box/holobadge(src)
 		new /obj/item/clothing/head/beret/sec/corporate/warden(src)
 		new /obj/item/clothing/suit/storage/hooded/wintercoat/security(src)
+		new /obj/item/clothing/shoes/boots/winter/security(src)
 		new /obj/item/device/flashlight/maglight(src)
 		new /obj/item/device/megaphone(src)
 		new /obj/item/clothing/mask/gas/half(src)
@@ -239,6 +243,7 @@
 		new /obj/item/weapon/gun/energy/taser(src)
 		new /obj/item/weapon/cell/device/weapon(src)
 		new /obj/item/clothing/suit/storage/hooded/wintercoat/security(src)
+		new /obj/item/clothing/shoes/boots/winter/security(src)
 		new /obj/item/device/flashlight/maglight(src)
 		return
 
@@ -364,6 +369,7 @@
 /obj/structure/closet/secure_closet/wall
 	name = "wall locker"
 	req_access = list(access_security)
+	icon = 'icons/obj/closet.dmi'	// Eros edit
 	icon_state = "wall-locker1"
 	density = 1
 	icon_closed = "wall-locker"
@@ -386,3 +392,34 @@
 				icon_state = icon_closed
 		else
 			icon_state = icon_opened
+
+
+// EROS Edit - Chapel closet, I don't want a new file for it and can't figure out where else to stuff it
+
+
+/obj/structure/closet/secure_closet/chapel
+	name = "chaplain's locker"
+	req_access = list(access_chapel_office)
+	icon_state = "preacher1"
+	icon_closed = "preacher"
+	icon_locked = "preacher1"
+	icon_opened = "preacheropen"
+	icon_broken = "preacherbroken"
+	icon_off = "preacheroff"
+
+
+	New()
+		..()
+		new /obj/item/clothing/under/rank/chaplain(src)
+		new /obj/item/clothing/shoes/black(src)
+		new /obj/item/clothing/suit/nun(src)
+		new /obj/item/clothing/head/nun_hood(src)
+		new /obj/item/clothing/suit/storage/hooded/chaplain_hoodie(src)
+		new /obj/item/clothing/suit/holidaypriest(src)
+		new /obj/item/clothing/under/wedding/bride_white(src)
+		new /obj/item/weapon/storage/backpack/cultpack (src)
+		new /obj/item/weapon/storage/fancy/candle_box(src)
+		new /obj/item/weapon/storage/fancy/candle_box(src)
+		new /obj/item/weapon/deck/tarot(src)
+		new /obj/item/device/megaphone(src)
+		return

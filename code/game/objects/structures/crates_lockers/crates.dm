@@ -3,7 +3,7 @@
 /obj/structure/closet/crate
 	name = "crate"
 	desc = "A rectangular steel crate."
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage_er.dmi'	//Eros edit
 	icon_state = "crate"
 	icon_opened = "crateopen"
 	icon_closed = "crate"
@@ -97,7 +97,7 @@
 	else if(istype(W, /obj/item/weapon/wirecutters))
 		if(rigged)
 			user  << "<span class='notice'>You cut away the wiring.</span>"
-			playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
+			playsound(src.loc, W.usesound, 100, 1)
 			rigged = 0
 			return
 	else return attack_hand(user)
@@ -377,6 +377,7 @@
 /obj/structure/closet/crate/bin
 	name = "large bin"
 	desc = "A large bin."
+	icon = 'icons/obj/storage.dmi'	//Eros edit
 	icon_state = "largebin"
 	icon_opened = "largebinopen"
 	icon_closed = "largebin"
