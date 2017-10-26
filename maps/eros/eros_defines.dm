@@ -55,8 +55,8 @@
 
 	zlevel_datum_type = /datum/map_z_level/eros
 
-	lobby_icon = 'icons/misc/title_vr.dmi'
-	lobby_screens = list("eros")
+	lobby_icon = 'icons/misc/title_er.dmi'
+	lobby_screens = list("title")
 
 	holomap_smoosh = list(list(
 		Z_LEVEL_SURFACE_LOW,
